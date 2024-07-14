@@ -23,13 +23,10 @@ int CONSOLE::out(const std::shared_ptr<message_t> &message)
 {
 	/////////////////////////////////////////////////////////////////////////////////////////  
 	
-	// std::cout << _YELLOW_ << "RUN OUT" << _BASE_TEXT_ << std::endl;
-
 	std::cout << message->data << std::endl;
 
-
 	tegia::message::send(this->_name,"/in",tegia::message::init());
-	
+
 	/////////////////////////////////////////////////////////////////////////////////////////  
 	return 200;
 };

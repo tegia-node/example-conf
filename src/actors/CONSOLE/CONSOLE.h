@@ -28,6 +28,7 @@ class CONSOLE: public tegia::actors::actor_t<EXAMPLE::CONSOLE>
 		
 		int in(const std::shared_ptr<message_t> &message);
 		int out(const std::shared_ptr<message_t> &message);
+		int parse(const std::shared_ptr<message_t> &message);
 
 	private:
 };

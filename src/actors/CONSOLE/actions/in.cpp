@@ -23,15 +23,15 @@ int CONSOLE::in(const std::shared_ptr<message_t> &message)
 {
 	/////////////////////////////////////////////////////////////////////////////////////////  
 
+
 	std::string input;
 	std::cout << _YELLOW_ << "tegia$ " << _BASE_TEXT_;
 	std::getline(std::cin, input);
 
 	auto msg = tegia::message::init();
-	msg->data["message"] = input;
-	msg->callback.add(this->_name,"/out");
+	msg->data["input"] = input;
+	tegia::message::send("example/console","/parse",msg);
 
-	tegia::message::send("example/phone","/parse",msg);
 	
 	/////////////////////////////////////////////////////////////////////////////////////////  
 	return 200;
