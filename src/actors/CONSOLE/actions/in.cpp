@@ -28,11 +28,16 @@ int CONSOLE::in(const std::shared_ptr<message_t> &message)
 	std::cout << _YELLOW_ << "tegia$ " << _BASE_TEXT_;
 	std::getline(std::cin, input);
 
+	std::string uuid = tegia::random::uuid();
+	
 	auto msg = tegia::message::init();
 	msg->data["input"] = input;
-	tegia::message::send("example/console","/parse",msg);
+	msg->data["task"] = uuid;
+	msg->callback.add(this->_name,"/out");
 
-	
+	tegia::message::send("example/phone/task/" + uuid,"/run",msg);
+
+
 	/////////////////////////////////////////////////////////////////////////////////////////  
 	return 200;
 };

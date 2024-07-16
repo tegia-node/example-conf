@@ -11,8 +11,9 @@ extern "C" tegia::actors::type_base_t * _init_type(const std::string &type_name)
 {	
 	auto type = new tegia::actors::type_t<EXAMPLE::PHONE>(ACTOR_TYPE);
 
-	type->add_action("/parse",&EXAMPLE::PHONE::parse);
-	type->add_action("/test",&EXAMPLE::PHONE::test);
+	type->add_action("/parse",   &EXAMPLE::PHONE::parse);
+	type->add_action("/run",     &EXAMPLE::PHONE::run);
+	type->add_action("/commit",  &EXAMPLE::PHONE::commit);
 
 	RETURN_TYPE(type,EXAMPLE::PHONE)
 };
@@ -44,5 +45,6 @@ PHONE::~PHONE()
 
 
 #include "actions/parse.cpp"
-#include "actions/test.cpp"
+#include "actions/run.cpp"
+#include "actions/commit.cpp"
 

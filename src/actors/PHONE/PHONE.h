@@ -4,6 +4,8 @@
 #include <tegia/tegia.h>
 #include <tegia/app/router.h>
 
+#include "state/state.h"
+
 #define ACTOR_TYPE "EXAMPLE::PHONE"
 
 namespace EXAMPLE {
@@ -27,10 +29,12 @@ class PHONE: public tegia::actors::actor_t<EXAMPLE::PHONE>
 		//
 		
 		int parse(const std::shared_ptr<message_t> &message);
-		int test(const std::shared_ptr<message_t> &message);
+		int run(const std::shared_ptr<message_t> &message);
+		int commit(const std::shared_ptr<message_t> &message);
 		
 
 	private:
+		EXAMPLE::PHONE_STATE state;
 };
 
 }	// END namespace EXAMPLE

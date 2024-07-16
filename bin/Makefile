@@ -35,8 +35,9 @@ libCONSOLE:
 
 libPHONE:
 	g++ -c -o PHONE.o                     ../src/actors/PHONE/PHONE.cpp                      $(Flag) -fPIC
+	g++ -c -o state.o                     ../src/actors/PHONE/state/state.cpp                $(Flag) -fPIC
 	g++ -shared -fPIC -o libPHONE.so        \
-	    PHONE.o -fPIC $(Flag)
+	    PHONE.o state.o -fPIC $(Flag)
 
 
 
