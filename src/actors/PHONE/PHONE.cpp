@@ -11,10 +11,9 @@ extern "C" tegia::actors::type_base_t * _init_type(const std::string &type_name)
 {	
 	auto type = new tegia::actors::type_t<EXAMPLE::PHONE>(ACTOR_TYPE);
 
-	type->add_action("/parse",&EXAMPLE::PHONE::parse);
-	type->add_action("/test",&EXAMPLE::PHONE::test);
+	ADD_ACTION("/parse",     &EXAMPLE::PHONE::parse,     ROLES::SESSION::SYSTEM);
 
-	RETURN_TYPE(type,EXAMPLE::PHONE)
+	return type;
 };
 
 
@@ -26,6 +25,11 @@ extern "C" tegia::actors::type_base_t * _init_type(const std::string &type_name)
 
 
 namespace EXAMPLE {
+
+PHONE::PHONE(const std::string &name): tegia::actors::actor_t(ACTOR_TYPE,name)
+{
+
+};	
 
 PHONE::~PHONE()
 {
@@ -44,5 +48,4 @@ PHONE::~PHONE()
 
 
 #include "actions/parse.cpp"
-#include "actions/test.cpp"
 

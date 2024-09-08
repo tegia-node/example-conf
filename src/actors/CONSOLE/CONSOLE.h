@@ -2,24 +2,19 @@
 #define H_TEST_CONSOLE
 
 #include <tegia/tegia.h>
-#include <tegia/app/router.h>
 
 #define ACTOR_TYPE "EXAMPLE::CONSOLE"
 
 namespace EXAMPLE {
 
-class CONSOLE: public tegia::actors::actor_t<EXAMPLE::CONSOLE>
+class CONSOLE: public tegia::actors::actor_t
 {
+	friend class tegia::actors::type_t<EXAMPLE::CONSOLE>;
+
+	protected:
+		CONSOLE(const std::string &name);
+
 	public:
-
-		CONSOLE(
-			const std::string &name, 
-			tegia::actors::type_t<EXAMPLE::CONSOLE> * type)
-		: tegia::actors::actor_t<EXAMPLE::CONSOLE>(name,type)
-		{
-
-		};	
-
 		~CONSOLE();
 
 		//

@@ -26,7 +26,6 @@ int PHONE::parse(const std::shared_ptr<message_t> &message)
 {
 	/////////////////////////////////////////////////////////////////////////////////////////  
 
-
 	std::cout << _YELLOW_ << "RUN TEST" << _BASE_TEXT_ << std::endl;
 
 	tegia::types::phone_t phone;

@@ -29,7 +29,7 @@ int CONSOLE::in(const std::shared_ptr<message_t> &message)
 
 	auto msg = tegia::message::init();
 	msg->data["message"] = input;
-	msg->callback.add(this->_name,"/out");
+	msg->callback.add(this->name,"/out");
 
 	tegia::message::send("example/phone","/parse",msg);
 	
