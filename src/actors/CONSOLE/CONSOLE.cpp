@@ -12,11 +12,11 @@ extern "C" tegia::actors::type_base_t * _init_type(const std::string &type_name)
 {	
 	auto type = new tegia::actors::type_t<EXAMPLE::CONSOLE>(ACTOR_TYPE);
 
-	type->add_action("/in",      &EXAMPLE::CONSOLE::in);
-	type->add_action("/out",     &EXAMPLE::CONSOLE::out);
-	type->add_action("/parse",   &EXAMPLE::CONSOLE::parse);
+	ADD_ACTION("/in",      &EXAMPLE::CONSOLE::in,      ROLES::SESSION::SYSTEM, ROLES::SESSION::PUBLIC, ROLES::SESSION::USER);
+	ADD_ACTION("/out",     &EXAMPLE::CONSOLE::out,     ROLES::SESSION::SYSTEM, ROLES::SESSION::PUBLIC, ROLES::SESSION::USER);
+	ADD_ACTION("/parse",   &EXAMPLE::CONSOLE::parse,   ROLES::SESSION::SYSTEM, ROLES::SESSION::PUBLIC, ROLES::SESSION::USER);
 
-	RETURN_TYPE(type,EXAMPLE::CONSOLE)
+	return type;
 };
 
 
@@ -30,6 +30,10 @@ extern "C" tegia::actors::type_base_t * _init_type(const std::string &type_name)
 
 namespace EXAMPLE {
 
+CONSOLE::CONSOLE(const std::string &name): tegia::actors::actor_t(ACTOR_TYPE,name)
+{
+
+};	
 
 CONSOLE::~CONSOLE()
 {

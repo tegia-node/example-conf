@@ -29,6 +29,8 @@ int CONSOLE::parse(const std::shared_ptr<message_t> &message)
 		tegia::message::send("example/phone","/parse",msg);
 	};
 
+	// std::cout << message->data["input"].get<std::string>() << std::endl;
+
 	std::string input = message->data["input"].get<std::string>();
 	char delimiter = ';';
     std::string token;
